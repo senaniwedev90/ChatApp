@@ -104,18 +104,7 @@ public class ChatApp {
                     // Create hash
                     message.createMessageHash(messagesEntered);
 
-                    // ===== SEND OPTIONS =====
-                    System.out.println("""
-                            1) Send Message
-                            2) Disregard Message
-                            3) Store Message
-                            """);
-
-                    System.out.print("Choose: ");
-                    int sendOption = Integer.parseInt(scanner.nextLine());
-
-                    String result = message.SentMessage(sendOption);
-                    System.out.println(result);
+                  
 
                     // Display message details if sent
                     if (sendOption == 1) {
