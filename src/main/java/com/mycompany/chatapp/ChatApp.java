@@ -104,29 +104,20 @@ public class ChatApp {
                     // Create hash
                     message.createMessageHash(messagesEntered);
 
-                  
+                    // ===== SEND OPTIONS =====
+                    System.out.println("""
+                            1) Send Message
+                            2) Disregard Message
+                            3) Store Message
+                            """);
 
-                    // Display message details if sent
-                    if (sendOption == 1) {
-                        System.out.println("\n--- MESSAGE DETAILS ---");
-                        System.out.println(message.printMessages());
-                        messagesEntered++;
-                    }
+                    System.out.print("Choose: ");
+                    int sendOption = Integer.parseInt(scanner.nextLine());
 
-                    break;
+                    String result = message.SentMessage(sendOption);
+                    System.out.println(result);
 
-                case 2:
-                    System.out.println("Coming Soon.");
-                    break;
-
-                case 3:
-                    running = false;
-                    break;
-
-                default:
-                    System.out.println("Invalid option.");
-            }
-        }
+                    
 
         // ===== FINAL COUNT =====
         System.out.println("\nTotal messages sent: " + Message.returnTotalMessages());
