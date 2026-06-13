@@ -17,20 +17,25 @@ public class ChatApp {
 
         Scanner scanner = new Scanner(System.in);
 
-        // ===== REGISTRATION =====
+        // ===== REGISTRATION ===== 
         System.out.print("Enter first name: ");
         String firstName = scanner.nextLine();
 
         System.out.print("Enter last name: ");
         String lastName = scanner.nextLine();
 
-        System.out.print("Enter username eg.(_Sena): ");
+        System.out.print("Enter a 5 letter username beginning with an underscore eg.(_Sena): ");
         String username = scanner.nextLine();
 
-        System.out.print("Enter password eg(.P@a123): ");
+        System.out.print("Enter a 8 letter password include\n");
+        System.out.println("1 Special Character");
+        System.out.println("Uppercase Letter");
+        System.out.println("Numerical Letter");
+        System.out.println("Example: eg(.P@a123): ");
+        System.out.print("Password: ");
         String password = scanner.nextLine();
 
-        System.out.print("Enter cell phone number eg.(+27/+47...): ");
+        System.out.print("Enter cell phone number eg.(+27...): ");
         String cellPhone = scanner.nextLine();
 
         Login login = new Login(username, password, cellPhone, firstName, lastName);
@@ -59,7 +64,7 @@ public class ChatApp {
         int messagesEntered = 0;
         boolean running = true;
 
-        // ===== MENU LOOP =====
+        // ===== Menu loop =====
         while (running) {
 
             System.out.println("""
@@ -104,7 +109,7 @@ public class ChatApp {
                     // Create hash
                     message.createMessageHash(messagesEntered);
 
-                    // ===== SEND OPTIONS =====
+                    // ===== Send Options =====
                     System.out.println("""
                             1) Send Message
                             2) Disregard Message
@@ -117,7 +122,27 @@ public class ChatApp {
                     String result = message.SentMessage(sendOption);
                     System.out.println(result);
 
-                    
+                    // Display message details if sent
+                    if (sendOption == 1) {
+                        System.out.println("\n--- MESSAGE DETAILS ---");
+                        System.out.println(message.printMessages());
+                        messagesEntered++;
+                    }
+
+                    break;
+
+                case 2:
+                    System.out.println("Coming Soon.");
+                    break;
+
+                case 3:
+                    running = false;
+                    break;
+
+                default:
+                    System.out.println("Invalid option.");
+            }
+        }
 
         // ===== FINAL COUNT =====
         System.out.println("\nTotal messages sent: " + Message.returnTotalMessages());
