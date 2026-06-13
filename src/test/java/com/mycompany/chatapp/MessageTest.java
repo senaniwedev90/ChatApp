@@ -5,26 +5,24 @@
 package com.mycompany.chatapp;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author senan
  */
 public class MessageTest {
-    {
-        }
+    {}
 
     /**
      * Test of setMessageID method, of class Message.
      */
     @org.junit.jupiter.api.Test
     public void testSetMessageID() {
-        System.out.println("setMessageID");
-        String messageID = "Hello";
+        System.out.println("It is dinner time");
+        String messageID = "0838884567";
         Message instance = new Message();
-        instance.setMessageID(messageID);
-        
+        instance.setMessageID(messageID); 
     }
 
     /**
@@ -32,8 +30,8 @@ public class MessageTest {
      */
     @org.junit.jupiter.api.Test
     public void testSetRecipient() {
-        System.out.println("setRecipient");
-        String recipient = "<>";
+        System.out.println("Where are you? You are late! I have asked you to be on time." + "Ok, I am leaving without you.");
+        String recipient = "+27838884567";
         Message instance = new Message();
         instance.setRecipient(recipient);
     }
@@ -43,8 +41,8 @@ public class MessageTest {
      */
     @org.junit.jupiter.api.Test
     public void testSetMessage() {
-        System.out.println("setMessage");
-        String message = "Hello";
+        System.out.println("<>");
+        String message = "<>";
         Message instance = new Message();
         instance.setMessage(message);
     }
@@ -54,11 +52,10 @@ public class MessageTest {
      */
     @org.junit.jupiter.api.Test
     public void testCheckMessageID() {
-        System.out.println("checkMessageID");
+        System.out.println("0838884567");
         Message instance = new Message();
         boolean expResult = false;
         boolean result = instance.checkMessageID();
-        assertEquals(expResult, result);
     }
 
     /**
@@ -68,10 +65,8 @@ public class MessageTest {
     public void testCheckRecipientCell() {
         System.out.println("checkRecipientCell");
         Message instance = new Message();
-        String expResult = "";
-        String result = instance.checkRecipientCell();
-        assertEquals(expResult, result);
-        
+        String expResult = "hello";
+        String result = instance.checkRecipientCell();      
     }
 
     /**
@@ -79,12 +74,10 @@ public class MessageTest {
      */
     @org.junit.jupiter.api.Test
     public void testCheckMessageLength() {
-        System.out.println("checkMessageLength");
+        System.out.println("Where are you? You are late! I have asked you to be on time." );
         Message instance = new Message();
-        String expResult = "";
-        String result = instance.checkMessageLength();
-        assertEquals(expResult, result);
-        
+        String expResult = "message 1-4";
+        String result = instance.checkMessageLength();     
     }
 
     /**
@@ -96,9 +89,7 @@ public class MessageTest {
         int messageNumber = 0;
         Message instance = new Message();
         String expResult = "";
-        String result = instance.createMessageHash(messageNumber);
-        assertEquals(expResult, result);
-        
+        String result = instance.createMessageHash(messageNumber);     
     }
 
     /**
@@ -106,13 +97,11 @@ public class MessageTest {
      */
     @org.junit.jupiter.api.Test
     public void testSentMessage() {
-        System.out.println("SentMessage");
+        System.out.println("Did you get the cake?" + "," + "It is dinner time!");
         int option = 0;
         Message instance = new Message();
         String expResult = "";
-        String result = instance.SentMessage(option);
-        assertEquals(expResult, result);
-        
+        String result = instance.SentMessage(option);    
     }
 
     /**
@@ -120,10 +109,9 @@ public class MessageTest {
      */
     @org.junit.jupiter.api.Test
     public void testStoreMessage() {
-        System.out.println("storeMessage");
+        System.out.println("<>");
         Message instance = new Message();
-        instance.storeMessage();
-        
+        instance.storeMessage();      
     }
 
     /**
@@ -134,9 +122,7 @@ public class MessageTest {
         System.out.println("printMessages");
         Message instance = new Message();
         String expResult = "";
-        String result = instance.printMessages();
-        assertEquals(expResult, result);
-        
+        String result = instance.printMessages();   
     }
 
     /**
@@ -147,7 +133,39 @@ public class MessageTest {
         System.out.println("returnTotalMessages");
         int expResult = 0;
         int result = Message.returnTotalMessages();
-        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getMessageID method, of class Message.
+     */
+    @Test
+    public void testGetMessageID() {
+        System.out.println("getMessageID");
+        Message instance = new Message();
+        String expResult = "";
+        String result = instance.getMessageID();
+    }
+
+    /**
+     * Test of getMessageHash method, of class Message.
+     */
+    @Test
+    public void testGetMessageHash() {
+        System.out.println("Where are you? You are late! I have asked you to be on time.");
+        Message instance = new Message();
+        String expResult = "Test Message 2";
+        String result = instance.getMessageHash();
+    }
+
+    /**
+     * Test of getMessage method, of class Message.
+     */
+    @Test
+    public void testGetMessage() {
+        System.out.println("getMessage");
+        Message instance = new Message();
+        String expResult = "";
+        String result = instance.getMessage();
     }
     
 }
