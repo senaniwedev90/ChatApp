@@ -67,12 +67,11 @@ public class ChatApp {
         // ===== Menu loop =====
         while (running) {
 
-            System.out.println("""
-                    
-                    1) Send Message
-                    2) Show recently sent messages
-                    3) Quit
-                    """);
+           System.out.println("""
+                1) Send Message
+                2) Show Stored Messages
+                3) Quit
+                       """);
 
             System.out.print("Choose an option: ");
             int choice = Integer.parseInt(scanner.nextLine());
