@@ -137,5 +137,19 @@ public void storeMessage() {
     // ===== Total Messages =====
     public static int returnTotalMessages() {
         return totalMessagesSent;
+        
+    }
+    
+    public String getMessageID() {
+        return messageID;
+    }
+
+    public String getMessageHash() {
+        return messageHash;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }
+
