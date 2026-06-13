@@ -12,6 +12,18 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class ChatApp {
+    
+        // Arrays to store message data
+        static String[] sentMessages = new String[10];
+        static String[] storedMessages = new String[10];
+        static String[] disregardedMessages = new String[10];
+        static String[] messageIDs = new String[10];
+        static String[] messageHashes = new String[10];
+
+        // Counters
+        static int sentCount = 0;
+        static int storedCount = 0;
+        static int discardCount = 0;
 
     public static void main(String[] args) {
 
@@ -71,7 +83,7 @@ public class ChatApp {
                 1) Send Message
                 2) Show Stored Messages
                 3) Quit
-                       """);
+                """);
 
             System.out.print("Choose an option: ");
             int choice = Integer.parseInt(scanner.nextLine());
@@ -121,17 +133,27 @@ public class ChatApp {
                     String result = message.SentMessage(sendOption);
                     System.out.println(result);
 
-                    // Display message details if sent
                     if (sendOption == 1) {
+                        sentMessages[sentCount] = message.getMessage();
+                        messageIDs[sentCount] = message.getMessageID();
+                        messageHashes[sentCount] = message.getMessageHash();
+                        sentCount++;
+
                         System.out.println("\n--- MESSAGE DETAILS ---");
                         System.out.println(message.printMessages());
-                        messagesEntered++;
-                    }
 
+                    } else if (sendOption == 2) {
+                        disregardedMessages[discardCount] = message.getMessage();
+                        discardCount++;
+
+                    } else if (sendOption == 3) {
+                        storedMessages[storedCount] = message.getMessage();
+                        storedCount++;
+                    }
                     break;
 
                 case 2:
-                    System.out.println("Coming Soon.");
+                    showStoredMessages();
                     break;
 
                 case 3:
@@ -146,7 +168,18 @@ public class ChatApp {
         // ===== FINAL COUNT =====
         System.out.println("\nTotal messages sent: " + Message.returnTotalMessages());
         System.out.println("Goodbye!");
-
         scanner.close();
     }
-}
+        // ===== SHOW STORED MESSAGES =====
+    public static void showStoredMessages() {
+            if (storedCount == 0) {
+                System.out.println("No stored messages.");
+                return;
+            }
+
+            System.out.println("---- STORED MESSAGES ----");
+            for (int i = 0; i < storedCount; i++) {
+                System.out.println((i + 1) + ") " + storedMessages[i]);
+            }
+        }
+    }
