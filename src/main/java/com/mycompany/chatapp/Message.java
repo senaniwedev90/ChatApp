@@ -81,6 +81,17 @@ public class Message {
 
     // ===== Send/Store/Discard =====
     public String SentMessage(int option) {
+        
+        sentMessages[sentCount] = message;
+        messageIDs[sentCount] = messageID;
+        messageHashes[sentCount] = messageHash;
+        sentCount++;
+        
+        storedMessages[storedCount] = message;
+        storedCount++;
+        
+        disregardedMessages[discardCount] = message;
+        discardCount++;
 
         switch (option) {
             case 1:
