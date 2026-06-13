@@ -6,7 +6,7 @@ package com.mycompany.chatapp;
 
 /**
  *
- * @author senan
+ * @author senaniwe
  */
 import java.util.Random;
 import java.io.FileWriter;
@@ -17,6 +17,18 @@ public class Message {
     private String recipient;
     private String message;
     private String messageHash;
+    
+    // Arrays to store message data
+    static String[] sentMessages = new String[10];
+    static String[] storedMessages = new String[10];
+    static String[] disregardedMessages = new String[10];
+    static String[] messageIDs = new String[10];
+    static String[] messageHashes = new String[10];
+
+    // Counters
+    static int sentCount = 0;
+    static int storedCount = 0;
+    static int discardCount = 0;
 
     private static int totalMessagesSent = 0;
 
@@ -33,12 +45,12 @@ public class Message {
         this.message = message;
     }
 
-    // ===== MESSAGE ID CHECK =====
+    // ===== Message ID Check =====
     public boolean checkMessageID() {
         return messageID.length() <= 10;
     }
 
-    // ===== RECIPIENT CHECK =====
+    // ===== Recipient Check =====
     public String checkRecipientCell() {
         if (recipient.matches("^\\+27\\d{9}$")) {
             return "Cell phone number successfully captured.";
@@ -46,7 +58,7 @@ public class Message {
         return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
     }
 
-    // ===== MESSAGE LENGTH CHECK =====
+    // ===== Message Length Check =====
     public String checkMessageLength() {
         if (message.length() <= 250) {
             return "Message ready to send.";
@@ -54,7 +66,7 @@ public class Message {
         return "Message exceeds 250 characters by " + (message.length() - 250) + "; please reduce the size.";
     }
 
-    // ===== MESSAGE HASH =====
+    // ===== Message Hash =====
     public String createMessageHash(int messageNumber) {
 
         String firstTwo = messageID.substring(0, 2);
@@ -67,7 +79,7 @@ public class Message {
         return messageHash;
     }
 
-    // ===== SEND / STORE / DISCARD =====
+    // ===== Send/Store/Discard =====
     public String SentMessage(int option) {
 
         switch (option) {
@@ -84,7 +96,7 @@ public class Message {
         }
     }
 
-    // ===== STORE MESSAGE (JSON) =====
+    // ===== Store Message (JSON) =====
 public void storeMessage() {
     try {
         FileWriter writer = new FileWriter("messages.json", true);
@@ -103,7 +115,7 @@ public void storeMessage() {
     }
 }
 
-    // ===== PRINT MESSAGE =====
+    // ===== Print Message =====
     public String printMessages() {
         return "Message ID: " + messageID +
                "\nMessage Hash: " + messageHash +
@@ -111,7 +123,7 @@ public void storeMessage() {
                "\nMessage: " + message;
     }
 
-    // ===== TOTAL MESSAGES =====
+    // ===== Total Messages =====
     public static int returnTotalMessages() {
         return totalMessagesSent;
     }
